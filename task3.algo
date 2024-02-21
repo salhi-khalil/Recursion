@@ -1,0 +1,23 @@
+FUNCTION seek(tab : ARRAY_OF INTEGER, start, end, a,b) : INTEGER
+VAR
+    m: INTEGER;
+BEGIN
+    IF( start > end) THEN
+        RETURN 0;
+    ELSE_IF (start = end) THEN
+        IF ( a <= tab[start] AND tab[start]<=b) THEN
+            RETURN start; 
+        ELSE    
+            RETURN 0;
+        END_IF
+    ELSE
+        m := (start+end)/2;
+        IF (tab[m]<a) THEN
+            RETURN seek(tab,m+1,end,a,b);
+        ELSE_IF (a <= tab[m] AND tab[m]<=b) THEN
+            RETURN m;
+        ELSE
+            seek(tab,start,m,a,b);
+        END_IF
+    END_IF
+END

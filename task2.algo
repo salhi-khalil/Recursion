@@ -1,0 +1,24 @@
+FUNCTION rankLastPositf1(arr: ARRAY_OF INTEGER, n : INTEGER) : INTEGER
+BEGIN
+    IF (n = 0) THEN
+        RETURN 0;
+    ELSE_IF (arr[n]> 0) THEN
+        RETURN n;
+    ELSE
+        RETURN rankPositf1(arr,n-1);
+    END_IF
+END
+
+FUNCTION rankLastPositf2(arr: ARRAY_OF INTEGER, start : INTEGER, VAR found :BOOLEAN) : INTEGER
+BEGIN
+    IF (start >= arr.length) THEN
+        found := FALSE;
+        RETURN 0; 
+    ELSE
+        rankLastPositf2(arr,start+1,found);
+        IF (NOT found AND arr[start] > 0) THEN
+            found := TRUE;
+            RETURN start;
+        END_IF
+    END_IF
+END

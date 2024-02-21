@@ -1,0 +1,9 @@
+// array poly will be present like this 
+// an | an-1 | ... | a0
+
+FUNCTION horner(poly : ARRAY_OF FLOAT, start,end : INTEGER, X :FLOAT) : return_type
+BEGIN
+    IF (start <= end) THEN
+        RETURN poly[end] + horner(poly, start, end -1, X)*X;
+    END_IF
+END
